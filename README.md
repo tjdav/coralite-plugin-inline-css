@@ -1,36 +1,43 @@
 # Coralite Inline CSS Plugin
 
-A simple plugin for Coralite that converts `link` tags with the `inline-css` attribute into `<style>` elements in the HTML output, allowing you to use CSS without external files.
+A plugin for Coralite that converts stylesheet `link` tags with the `inline-css` attribute into `<style>` elements in the HTML output, allowing you to use CSS without external files.
 
-## Getting Started
+## Features
 
-1. Install the plugin via npm:
+- Inlines CSS from `<link>` tags into `<style>` elements.
+- Optional options to:
+  - Transform `@import` rules to inline content.
+  - Minify CSS by removing comments and unnecessary whitespace.
+
+## Installation
+
+Install the plugin via npm:
+
 ```bash
 npm install coralite-plugin-inline-css
 ```
 
-2. Configure Coralite in your `coralite.config.js` file:
-```js
-// coralite.config.js
-import inlineCSS from 'coralite-plugin-inline-css'
-
-export default {
-  plugins: [inlineCSS]
-}
-```
-
 ## Usage
 
-### 1. Create a CSS file:
+### 1. Configure Coralite
 
-```css
-body {
-  background-color: rebeccapurple;
-  color: white;
-}
+Create a `coralite.config.js` file with the plugin configuration:
+
+```js
+// coralite.config.js
+import inlineCSS from 'coralite-plugin-inline-css';
+
+export default {
+  plugins: [inlineCSS({
+    atImport: true,
+    minify: true
+  })]
+};
 ```
 
-### 2. Reference the CSS file in your HTML with the `inline-css` attribute:
+### 2. Use in HTML
+
+Add the `inline-css` attribute to your `<link>` tags:
 
 ```html
 <!DOCTYPE html>
@@ -50,7 +57,9 @@ body {
 </html>
 ```
 
-### 3. Output after processing:
+### 3. Output
+
+The plugin will transform your `<link>` tag into a `<style>` block with the inlined CSS:
 
 ```html
 <!DOCTYPE html>
@@ -61,7 +70,7 @@ body {
   <meta name="name" content="coralite">
   <meta name="description" content="look mum, no database!">
   <style>
-    body {
+    .body {
       background-color: rebeccapurple;
       color: white;
     }
@@ -72,4 +81,28 @@ body {
 
 </body>
 </html>
+```
+
+## Options
+
+```js
+/**
+ * @typedef {Object} InlineCSSOptions
+ * @property {boolean} [atImport=false] - Transform @import rules to inlining content.
+ * @property {boolean} [minify=false] - Minify CSS by removing comments and unnecessary whitespace from CSS files.
+ */
+```
+
+## Example Configuration
+
+```js
+// coralite.config.js
+import inlineCSS from 'coralite-plugin-inline-css';
+
+export default {
+  plugins: [inlineCSS({
+    atImport: true,
+    minify: true
+  })]
+};
 ```
