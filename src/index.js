@@ -16,8 +16,8 @@ import postcssMinify from 'postcss-minify'
 /**
  * Coralite plugin to inline CSS
  * @param {Object} [options] - Plugin options
- * @param {boolean} [options.atImport] - Whether to use postcss-at-import plugin
- * @param {boolean} [options.minify] - Whether to minify CSS
+ * @param {boolean} [options.atImport] - Transform `@import` rules to inlining content.
+ * @param {boolean} [options.minify] - Minify CSS by removing comments and unnecessary whitespace from CSS files.
  */
 export default ({
   atImport,
