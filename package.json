@@ -1,13 +1,25 @@
 {
   "name": "coralite-plugin-inline-css",
-  "version": "0.1.0",
-  "description": "Inline stylesheets",
+  "version": "0.2.0",
+  "description": "Coralite plugin for inlining CSS.  Eliminate HTTP requests and improve performance by converting `<link>` tag CSS to `<style>` tags.",
   "scripts": {
     "test": "node  --experimental-vm-modules --test",
     "test-coverage": "node --experimental-vm-modules --experimental-test-coverage --test"
   },
   "type": "module",
-  "keywords": [],
+  "keywords": [
+   "coralite",
+    "inline css",
+    "CSS inlining",
+    "stylesheet optimization",
+    "performance improvement",
+    "web performance",
+    "SSG plugin",
+    "server-side rendering",
+    "static site generator",
+    "CSS minification",
+    "HTML optimization"
+  ],
   "homepage": "https://coralite.io",
   "author": {
     "name": "Thomas David",
