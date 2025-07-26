@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "description": "Inline stylesheets",
   "scripts": {
-    "build": "coralite -t tests/fixtures/templates -p tests/fixtures/pages -o dist",
     "test": "node  --experimental-vm-modules --test",
-    "test-coverage": "node --experimental-vm-modules --experimental-test-coverage --test",
-    "server": "sirv dist --dev --port 3000"
+    "test-coverage": "node --experimental-vm-modules --experimental-test-coverage --test"
   },
   "type": "module",
   "keywords": [],
