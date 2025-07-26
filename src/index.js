@@ -1,6 +1,6 @@
 import { createPlugin, } from 'coralite/utils'
 import { readFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { join, resolve } from 'node:path'
 import postcss from 'postcss'
 import postcssAtImport from 'postcss-import'
 import postcssMinify from 'postcss-minify'
@@ -18,10 +18,12 @@ import postcssMinify from 'postcss-minify'
  * @param {Object} [options] - Plugin options
  * @param {boolean} [options.atImport] - Transform `@import` rules to inlining content.
  * @param {boolean} [options.minify] - Minify CSS by removing comments and unnecessary whitespace from CSS files.
+ * @param {string} [options.path] - The path of the CSS source files.
  */
 export default ({
   atImport,
-  minify
+  minify,
+  path
 } = {}) => {
   const css = postcss()
 
@@ -47,10 +49,14 @@ export default ({
           && currentNode.name === 'link'
           && typeof currentNode.attribs === 'object'
           && currentNode.attribs.rel === 'stylesheet'
-          && currentNode.attribs['inline-css'] != null) {
-
+          && currentNode.attribs['inline-css'] != null
+        ) {          
           // resolve the CSS file path using the inline-css attribute or href
-          const cssPath = resolve(currentNode.attribs['inline-css'] || currentNode.attribs.href);
+          let cssPathname = join((path || ''), currentNode.attribs['inline-css'] || currentNode.attribs.href)
+          // make path relative
+          cssPathname = cssPathname[0] === '/' ? cssPathname.substring(1, cssPathname.length) : cssPathname
+          // create absolute path
+          const cssPath = resolve(cssPathname);
 
           try {
             // read the CSS content from the resolved path
