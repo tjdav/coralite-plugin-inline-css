@@ -1,4 +1,4 @@
-import { createPlugin, } from 'coralite/utils'
+import { createPlugin, } from 'coralite'
 import { readFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import postcss from 'postcss'
