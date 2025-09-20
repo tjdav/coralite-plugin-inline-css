@@ -8,7 +8,7 @@
   },
   "type": "module",
   "keywords": [
-   "coralite",
+    "coralite",
     "inline css",
     "CSS inlining",
     "stylesheet optimization",
@@ -38,14 +38,11 @@
     }
   },
   "license": "AGPL-3.0-only",
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.17.0",
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^4.4.1",
     "@stylistic/eslint-plugin-plus": "^4.4.1",
-    "coralite": "^0.14.0"
-  },
-  "peerDependencies": {
-    "coralite": "^0.14.0"
+    "coralite": "^0.18.5"
   },
   "dependencies": {
     "postcss": "^8.5.6",
