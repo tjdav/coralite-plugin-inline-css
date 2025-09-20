@@ -37,7 +37,7 @@
   },
   "exports": {
     ".": {
-      "default": "./src/index.js"
+      "default": "./lib/index.js"
     }
   },
   "license": "AGPL-3.0-only",
