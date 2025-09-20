@@ -20,6 +20,9 @@
     "CSS minification",
     "HTML optimization"
   ],
+  "files": [
+    "lib"
+  ],
   "homepage": "https://coralite.io",
   "author": {
     "name": "Thomas David",
