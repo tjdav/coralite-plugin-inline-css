@@ -1,6 +1,6 @@
 {
   "name": "coralite-plugin-inline-css",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Coralite plugin for inlining CSS.  Eliminate HTTP requests and improve performance by converting `<link>` tag CSS to `<style>` tags.",
   "scripts": {
     "test": "node  --experimental-vm-modules --test",
