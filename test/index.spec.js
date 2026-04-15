@@ -3,14 +3,13 @@ import { strictEqual, notStrictEqual, ok } from 'node:assert/strict'
 
 // Import Coralite and the plugin
 import Coralite from 'coralite'
-import inlineCSS from '../src/index.js' // Adjust path if needed
+import inlineCSS from '../lib/index.js'
 
 test('default inline css', async () => {
-  // Setup configuration
   const config = {
-    templates: 'test/fixtures/templates',
+    components: 'test/fixtures/components',
     pages: 'test/fixtures/pages',
-    plugins: [inlineCSS()]
+    plugins: [inlineCSS()],
   }
 
   // Create Coralite instance
@@ -20,7 +19,7 @@ test('default inline css', async () => {
   await coralite.initialise()
 
   // Compile documents
-  const documents = await coralite.compile()
+  const documents = await coralite.build()
 
   // Verify that documents were compiled
   notStrictEqual(documents, undefined)
@@ -33,13 +32,13 @@ test('default inline css', async () => {
 }</style>`
 
   // Basic check for inlined styles
-  ok(documents[0].html.includes(expectedCSS))
+  ok(documents[0].content.includes(expectedCSS))
 })
 
 test('minified inline css', async () => {
   // Setup configuration
   const config = {
-    templates: 'test/fixtures/templates',
+    components: 'test/fixtures/components',
     pages: 'test/fixtures/pages',
     plugins: [inlineCSS({
       minify: true
@@ -53,7 +52,7 @@ test('minified inline css', async () => {
   await coralite.initialise()
 
   // Compile documents
-  const documents = await coralite.compile()
+  const documents = await coralite.build()
 
   // Verify that documents were compiled
   notStrictEqual(documents, undefined)
@@ -63,13 +62,13 @@ test('minified inline css', async () => {
   const expectedCSS = `<style>body{background-color:rebeccapurple;color:white}</style>`
 
   // Basic check for inlined styles
-  ok(documents[0].html.includes(expectedCSS))
+  ok(documents[0].content.includes(expectedCSS))
 })
 
 test('inline @import css', async () => {
   // Setup configuration
   const config = {
-    templates: 'test/fixtures/templates',
+    components: 'test/fixtures/components',
     pages: 'test/fixtures/pages',
     plugins: [inlineCSS({
       atImport: true
@@ -83,7 +82,7 @@ test('inline @import css', async () => {
   await coralite.initialise()
 
   // Compile documents
-  const documents = await coralite.compile()
+  const documents = await coralite.build()
 
   // Verify that documents were compiled
   notStrictEqual(documents, undefined)
@@ -95,5 +94,5 @@ test('inline @import css', async () => {
 }</style>`
 
   // Basic check for inlined styles
-  ok(documents[0].html.includes(expectedCSS))
+  ok(documents[0].content.includes(expectedCSS))
 })

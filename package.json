@@ -41,11 +41,13 @@
     }
   },
   "license": "AGPL-3.0-only",
-  "packageManager": "pnpm@10.17.0",
+  "peerDependencies": {
+    "coralite": "^0.31.7"
+  },
   "devDependencies": {
     "@stylistic/eslint-plugin-js": "^4.4.1",
     "@stylistic/eslint-plugin-plus": "^4.4.1",
-    "coralite": "^0.18.5"
+    "coralite": "^0.31.7"
   },
   "dependencies": {
     "postcss": "^8.5.6",
